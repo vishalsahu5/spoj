@@ -1,4 +1,6 @@
-#include <bits/stdc++.h>
+//#include <bits/stdc++.h>
+#include <iostream>
+#include <algorithm>
 using namespace std;
 const long long int len = 10000000;
 int memo[len];
@@ -21,7 +23,7 @@ void sieve(){
 }
 
 int main(){
-	freopen("input.txt", "r", stdin);
+    freopen("input.txt", "r", stdin);
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL);
 	int t;
