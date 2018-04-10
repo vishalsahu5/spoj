@@ -14,12 +14,26 @@ int main(){
 	}
 	int k;
 	cin >> k;
-	for(int i=0; i<=n-k; i++){
-		int max_ele = INT_MIN;
-		for(int j=i; j<i+k; j++){
-			max_ele = max(max_ele, v[j]);
+	deque<int> q;
+	for(int i=0; i<k; i++){
+		while(!q.empty() && v[i] >= v[q.back()]){
+			q.pop_back();
 		}
-		cout << max_ele << " ";
+		q.push_back(i);
+	}
+	for(int i=k; i<n; i++){
+		cout << v[q.front()] << " ";
+
+		while(!q.empty() && v[i] >= v[q.back()]){
+			q.pop_back();
+		}
+		if(!q.empty() && q.front() <= i - k){
+			q.pop_front();
+		}
+		q.push_back(i);
+	}
+	if(!q.empty()){
+		cout << v[q.front()] << " ";	
 	}
 	cout << endl;
 	return 0;
